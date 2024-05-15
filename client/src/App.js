@@ -1,34 +1,4 @@
 
-// import './App.css';
-// import io from 'socket.io-client';
-// import {useState} from 'react';
-// import Chat from './Chat';
-
-// const socket = io.connect('http://localhost:3001');
-
-// function App() {
-//   const [username, setUsername] = useState('');
-//   const [room, setRoom] = useState('');
-
-//   const joinRoom = () =>{
-//     if (username !== '' || room !== ''){
-//       socket.emit('join_room', room)
-//     }
-//   }
-
-//   return (
-//     <div className="App">
-//       <h1>Join a chat</h1>
-//       <input type='text' placeholder='Name' onChange={(e)=> setUsername(e.target.value)}/>
-//       <input type='text' placeholder='Room ID...' onChange={(e)=> setRoom(e.target.value)}/>
-//       <button onClick={joinRoom}>Join a room</button>
-
-//       <Chat socket={socket} username={username} room={room}/>
-//     </div>
-//   );
-// }
-
-// export default App;
 
 
 import "./App.css";
@@ -58,10 +28,12 @@ function App() {
             !showChat ?
             <div className="joinChatContainer">
 
-            <h3>Join A Chat</h3>
+            <h2 className="mainPageTitle">Join A Chat</h2>
+            <div className="joinChatInputSection">
             <input
+            className="nameInput"
               type="text"
-              placeholder="John..."
+              placeholder="Input your name"
               onChange={(event) => {
                 setUsername(event.target.value);
               }}
@@ -73,6 +45,7 @@ function App() {
                 setRoom(event.target.value);
               }}
             />
+            </div>
             <button onClick={joinRoom}>Join A Room</button>
           </div>
           :

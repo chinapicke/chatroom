@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import './App.css';
 
 const Chat = ({socket, username, room}) => {
     const [message, setMessage] = useState('');
@@ -38,9 +39,10 @@ useEffect(()=>{
   return (
     <div className='chatContainer'>
         <div className='chatHeader'>
-
+          <h1>You are in room {room}</h1>
         </div>
         <div className='chatBody'>
+          <div className='messageContainer'>
             <div className='chatMessage'>
                 {messageRecieved.map((message)=>{
                     return(
@@ -48,15 +50,20 @@ useEffect(()=>{
                 className="message"
                 id={username === message.author ? "you" : "other"}
               >
-                 <h1>{message.message}</h1>
-                        <p>{message.time}</p>
-                        <p>{message.author}</p>
+                <div className='messageText'>
+                  <h4>{message.message}</h4>
+                </div>
+                <div className='messageInfo'> 
+                  <p>{message.time}</p>
+                  <p>{message.author}</p>
+                </div>
               </div>
                        
                     
                     )
                 })
                 }
+            </div>
             </div>
             <div className='writeMessageContainer'>
                 <input type='text' placeholder='Write you message here....' onChange={(e)=> setMessage(e.target.value)}/>
